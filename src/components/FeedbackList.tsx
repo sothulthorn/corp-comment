@@ -1,28 +1,46 @@
-import { TriangleUpIcon } from '@radix-ui/react-icons';
+import { useEffect, useState } from 'react';
+import FeedbackItem from './FeedbackItem';
+import Spinner from './Spinner';
+import ErrorMessage from './ErrorMessage';
 
 const FeedbackList = () => {
+  const [feedbackItems, setFeedbackItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const fetchFeedbackItem = async () => {
+      setIsLoading(true);
+
+      try {
+        const response = await fetch(
+          'https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks'
+        );
+
+        if (!response.ok) {
+          throw new Error();
+        }
+
+        const data = await response.json();
+        setFeedbackItems(data.feedbacks);
+      } catch (error) {
+        setErrorMessage('Something went wrong. Please try again later.');
+      }
+      setIsLoading(false);
+    };
+
+    fetchFeedbackItem();
+  }, []);
+
   return (
     <ol className="feedback-list">
-      <li className="feedback">
-        <button>
-          <TriangleUpIcon />
-          <span>593</span>
-        </button>
+      {isLoading ? <Spinner /> : null}
 
-        <div>
-          <p>C</p>
-        </div>
+      {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
 
-        <div>
-          <p>Code Square</p>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
-            quibusdam, sunt suscipit dignissimos voluptatibus voluptas.
-          </p>
-        </div>
-
-        <p>4d</p>
-      </li>
+      {feedbackItems.map((feedbackItem) => (
+        <FeedbackItem key={feedbackItem.id} feedbackItem={feedbackItem} />
+      ))}
     </ol>
   );
 };
