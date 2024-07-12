@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MAX_CHARACTERS } from '../lib/constants';
+import { MAX_CHARACTERS } from '../../lib/constants';
 
 type FeedbackFormProps = {
   onAddToList: (text: string) => void;
@@ -21,6 +21,7 @@ const FeedbackForm = ({ onAddToList }: FeedbackFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onAddToList(text);
+    setText('');
   };
 
   return (
