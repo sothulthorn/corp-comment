@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# CorpComment: Give Feedback Publicly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![](/screenshots/screen.png)
 
-Currently, two official plugins are available:
+Corp Comment is a dynamic and interactive web application built with React and TypeScript, designed to facilitate open and transparent feedback within organizations. This platform allows users to publicly share their feedback, view comments from others, and engage with feedback through voting.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features:
 
-## Expanding the ESLint configuration
+- **Public Feedback Posting**: Users can post their feedback directly to the backend server, ensuring their voices are heard in a structured and accessible manner.
+- **Feedback Browsing**: Users can explore feedback from others, gaining insights into diverse perspectives and experiences within the organization.
+- **Voting System**: Engage with feedback by voting on comments, helping to highlight the most impactful and relevant feedback.
+- **Company-Specific Querying**: Filter feedback based on company affiliations, allowing users to quickly find feedback related to specific companies within the organization.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation Steps
 
-- Configure the top-level `parserOptions` property like this:
+```sh
+# Clone the respository
+git clone https://github.com/sothulthorn/corp-comment.git
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+# Navigate to the project directory
+cd corp-comment
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
