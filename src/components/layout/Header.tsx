@@ -1,18 +1,18 @@
-import { useFeedbackItemsContext } from '../../lib/hooks';
+import { useFeedbackItemStore } from '../../stores/feedbackItemsStore';
 import FeedbackForm from '../feedback/FeedbackForm';
 import Logo from '../Logo';
 import PageHeading from '../PageHeading';
 import Pattern from '../Pattern';
 
 const Header = () => {
-  const { handleAddToList } = useFeedbackItemsContext();
+  const addItemToList = useFeedbackItemStore((state) => state.addItemToList);
 
   return (
     <header>
       <Pattern />
       <Logo />
       <PageHeading />
-      <FeedbackForm onAddToList={handleAddToList} />
+      <FeedbackForm onAddToList={addItemToList} />
     </header>
   );
 };

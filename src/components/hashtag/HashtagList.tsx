@@ -1,8 +1,9 @@
-import { useFeedbackItemsContext } from '../../lib/hooks';
+import { useFeedbackItemStore } from '../../stores/feedbackItemsStore';
 import HashtagItem from './HashtagItem';
 
 const HashtagList = () => {
-  const { companyList, handleSelectedCompany } = useFeedbackItemsContext();
+  const companyList = useFeedbackItemStore((state) => state.getCompanyList());
+  const selectCompany = useFeedbackItemStore((state) => state.selectCompany);
 
   return (
     <ul className="hashtags">
@@ -10,7 +11,7 @@ const HashtagList = () => {
         <HashtagItem
           key={company}
           company={company}
-          onSelectCompany={handleSelectedCompany}
+          onSelectCompany={selectCompany}
         />
       ))}
     </ul>
